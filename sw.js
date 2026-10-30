@@ -1,5 +1,5 @@
 // Offline-Fähigkeit: Netzwerk zuerst, ohne Netz die gespeicherte Fassung.
-const CACHE = 'zufall-v1';
+const CACHE = 'zufall-v2';
 const SHELL = ['./', 'index.html', 'css/app.css', 'js/app.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
@@ -9,7 +9,8 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      // Nur eigene alte Caches löschen: andere Apps unter derselben Adresse nutzen denselben Cache-Speicher
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith('zufall-') && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
