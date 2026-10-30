@@ -1,0 +1,16 @@
+{
+  "name": "Zufall",
+  "short_name": "Zufall",
+  "description": "Zufällig aus Listen ziehen, Zahlen, Würfel und Münze",
+  "lang": "de",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f4f1",
+  "theme_color": "#f4f4f1",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
